@@ -11,7 +11,7 @@ class Form extends Component {
 			id: ""
 		}
 	}
-	componentDidMount() {
+	componentDidMount() {		
 		if (this.props.match.params.id) {
 			const rslt = this.props.showEditedContent(this.props.match.params.id)
 			this.setState({
@@ -19,7 +19,7 @@ class Form extends Component {
 				descriptoin: rslt.descriptoin,
 				key: rslt.index,
 				imageUrl: rslt.imageUrl
-			})
+			})		
 		}
 	}
 
@@ -44,7 +44,9 @@ class Form extends Component {
 				<label> description:
 		        <textarea value={this.state.descriptoin} name="descriptoin" onChange={this.handleChange}></textarea>
 				</label>
-				<input type="file" name="imageUrl" onChange={this.handleChange} />
+				<label> image url:
+				<input type="text" name="imageUrl" onChange={this.handleChange} />
+				</label>
 				<input type="submit" value="submit"></input>
 
 			</form>

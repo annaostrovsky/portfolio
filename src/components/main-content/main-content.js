@@ -9,17 +9,14 @@ class MainContent extends Component {
       
     }
   }
-  render() {
-    //console.log(this.props.generatedData);
+  render() {   
     return (
       <div className="main-content">
       { _.sortBy(this.props.generatedData,i=>+i.key).map((element, index)=>{
        return <PortfolioElement {...element} index={element.key} delete = {this.props.delete} />   
-      })}
-         
+      })}         
       </div>
     );
   }
 }
-
 export default MainContent;

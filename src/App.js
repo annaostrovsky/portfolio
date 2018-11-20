@@ -18,7 +18,6 @@ class App extends Component {
     }
   }
 
-
   deletePortfolioItem = (index) => {
     this.setState({
       generatedData: [...this.state.generatedData.filter(item => item.key !== index)]
@@ -37,17 +36,13 @@ class App extends Component {
   updatePortfolioItem = (id, title, imageUrl, description) => {
     this.setState(prevState => {
       let newItems = prevState.generatedData.filter(item => item.key.toString() !== id.toString())
-      newItems= [...newItems,{key:id, title, imageUrl, description}];
-      // const itemToEdit = prevState.generatedData.filter(item => item.key.toString() == id.toString())[0];
-      // itemToEdit.title = title;
-      // itemToEdit.description = description;
-      // itemToEdit.imageUrl = imageUrl;
+      newItems= [...newItems,{key:id, title, imageUrl, description}];     
       return { generatedData: newItems};
     })
   }
 
-  showEditedContent = (elementKey) => {
-    return this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0];
+  showEditedContent = (elementKey) => {    
+    return this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0];   
   }
 
   render() {
@@ -65,8 +60,8 @@ class App extends Component {
           <Route exact path="/edit" render={(props) => (
             <Form {...props} onSubmit={this.addNewPortfolioItem} showEditedContent={this.showEditedContent} />
           )} />
-          <Route path="/portfolio-details" render={(props) => (
-            <ProtfolioDetails {...props} generatedData={this.state.generatedData} />
+          <Route path="/portfolio-details/:id" render={(props) => (
+            <ProtfolioDetails {...props} showEditedContent={this.showEditedContent} />
           )} />         
 
         </div>
@@ -74,8 +69,8 @@ class App extends Component {
     );
   }
 }
-App.PropTypes = {
-  id: PropTypes.id,
+App.propTypes = {
+  key: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   imageUrl: PropTypes.string,  
