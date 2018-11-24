@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       generatedData: data,
+      obj: null,
     }
   }
 
@@ -24,19 +25,19 @@ class App extends Component {
     });
   }
 
-  addNewPortfolioItem = (id, title, imageUrl, descriptoin) => {
+  addNewPortfolioItem = (id, title, description, imageUrl) => {
     this.setState(prevState => {
       const newId = (+_.maxBy(prevState.generatedData, item => +item.key).key + 1).toString();
       return ({
-        generatedData: [...prevState.generatedData, { key: newId, title, descriptoin, imageUrl }]
+        generatedData: [...prevState.generatedData, { key: newId, title, description, imageUrl }]
       })
     }
     )
   }
-  updatePortfolioItem = (id, title, imageUrl, description) => {
+  updatePortfolioItem = (id, title, description, imageUrl) => {
     this.setState(prevState => {
       let newItems = prevState.generatedData.filter(item => item.key.toString() !== id.toString())
-      newItems= [...newItems,{key:id, title, imageUrl, description}];     
+      newItems= [...newItems,{key:id, title, description, imageUrl}];     
       return { generatedData: newItems};
     })
   }
@@ -45,13 +46,21 @@ class App extends Component {
     return this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0];   
   }
 
+  changeToFullScreen =(elementKey)=>{
+    console.log(elementKey)
+    this.setState({
+      obj: this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0]      
+
+    })
+  }
+
   render() {
     return (
       <Router>
         <div className="flex">
           <Route path="/" component={Sidebar} />
           <Route exact path="/" render={() => (
-            <MainContent generatedData={this.state.generatedData} delete={this.deletePortfolioItem} edit={this.editHandleClick} />
+            <MainContent onFullScreen={this.changeToFullScreen} generatedData={this.state.generatedData} delete={this.deletePortfolioItem} edit={this.editHandleClick} />
           )} />
           <Route path="/about" component={AboutPage} />
           <Route path="/edit/:id" render={(props) => (
@@ -61,7 +70,7 @@ class App extends Component {
             <Form {...props} onSubmit={this.addNewPortfolioItem} showEditedContent={this.showEditedContent} />
           )} />
           <Route path="/portfolio-details/:id" render={(props) => (
-            <ProtfolioDetails {...props} showEditedContent={this.showEditedContent} />
+            <ProtfolioDetails {...props} {...this.state.obj} />
           )} />         
 
         </div>
