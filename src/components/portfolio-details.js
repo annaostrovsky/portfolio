@@ -1,25 +1,35 @@
 import { withRouter } from 'react-router-dom'
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'; 
+
 
 class ProtfolioDetails extends Component {
-	constructor(props) {
+	constructor(props) {		
 		super(props);
-		this.state = {			 
-		}
-	}
-	closePage=(event)=>{
+		
+	}	
+
+	closePage=()=>{
 		this.props.history.push("/");	
 	}
-	
-	render() {
+	 
+	render() {	
 		return (
 		<div className="portfolio-details">	
-		     <button onClick={this.closePage}>close</button>		
-	         <div>{this.props.title}</div>	
+		<div className="portfolio-details--wrapper">	
+		     <button onClick={this.closePage} className="portfolio-details__button fa fa-times-circle"></button>		
+	         <h3>{this.props.title}</h3>	
 	         <div>{this.props.description}</div>	
-	         <img src={this.props.imageUrl}></img>
+	         <img class="portfolio-details__img" src={this.props.imageUrl} alt="full-screen-img"></img>
+		</div>
 		</div>
 		)
 	}
 }
+ProtfolioDetails.propTypes = {
+	key: PropTypes.string,
+	title: PropTypes.string,
+	description: PropTypes.string,
+	imageUrl: PropTypes.string,  
+  }
 export default withRouter(ProtfolioDetails);

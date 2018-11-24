@@ -25,6 +25,7 @@
 }
 a{
   display: block;
+  text-decoration: none;
 }
 
 .portfolio-element{
@@ -43,6 +44,15 @@ a{
 	font-weight: 300;
 	align-items: center;
 	letter-spacing: 2px;
+}
+.portfolio-element__main-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.portfolio-element__title{
+color: white;
+margin-bottom: 10px;
 }
 
 .portfolio-element__icon{
@@ -89,4 +99,62 @@ a{
   text-decoration: none;
   letter-spacing: 1px;
   margin: 15px 0;
+}
+
+img{
+  width: 80px;
+}
+
+.portfolio-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+
+}
+.portfolio-details--wrapper{
+  width: 400px;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0 0 10px rgba(0,0,0, 0.4);
+  height: 500px;
+  position: relative;
+  align-items: center;
+}
+
+.portfolio-details__button{
+      background: none; 
+      border: none;
+      position: absolute;
+      top: -14px;
+      font-size: 30px;
+      right: -16px;
+      cursor: pointer;      
+}
+.portfolio-details__button:focus{
+  outline: none;
+}
+.portfolio-details__img{
+  position: absolute;
+  width: 400px;
+  bottom: 0;
+  height: 390px;
+}
+label{
+  font-weight:500;
+  margin:20px 0 5px 40px;
+}
+input,textarea{
+  margin-left: 40px;
+  min-width: 400px;
+  min-height: 25px;
+  border: 1px solid #ddd;
+}
+textarea{
+  min-height: 200px;
+}
+input[type="submit"]{
+  height: 40px;
+  margin-top: 20px;
+  
 }

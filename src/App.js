@@ -15,9 +15,9 @@ class App extends Component {
     super(props);
     this.state = {
       generatedData: data,
+      obj: null,
     }
   }
-
 
   deletePortfolioItem = (index) => {
     this.setState({
@@ -25,29 +25,33 @@ class App extends Component {
     });
   }
 
-  addNewPortfolioItem = (id, title, imageUrl, descriptoin) => {
+  addNewPortfolioItem = (id, title, description, imageUrl) => {
     this.setState(prevState => {
       const newId = (+_.maxBy(prevState.generatedData, item => +item.key).key + 1).toString();
       return ({
-        generatedData: [...prevState.generatedData, { key: newId, title, descriptoin, imageUrl }]
+        generatedData: [...prevState.generatedData, { key: newId, title, description, imageUrl }]
       })
     }
     )
   }
-  updatePortfolioItem = (id, title, imageUrl, description) => {
+  updatePortfolioItem = (id, title, description, imageUrl) => {
     this.setState(prevState => {
       let newItems = prevState.generatedData.filter(item => item.key.toString() !== id.toString())
-      newItems= [...newItems,{key:id, title, imageUrl, description}];
-      // const itemToEdit = prevState.generatedData.filter(item => item.key.toString() == id.toString())[0];
-      // itemToEdit.title = title;
-      // itemToEdit.description = description;
-      // itemToEdit.imageUrl = imageUrl;
+      newItems= [...newItems,{key:id, title, description, imageUrl}];     
       return { generatedData: newItems};
     })
   }
 
-  showEditedContent = (elementKey) => {
-    return this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0];
+  showEditedContent = (elementKey) => {    
+    return this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0];   
+  }
+
+  changeToFullScreen =(elementKey)=>{
+    console.log(elementKey)
+    this.setState({
+      obj: this.state.generatedData.filter(item => item.key.toString() === elementKey.toString())[0]      
+
+    })
   }
 
   render() {
@@ -56,7 +60,7 @@ class App extends Component {
         <div className="flex">
           <Route path="/" component={Sidebar} />
           <Route exact path="/" render={() => (
-            <MainContent generatedData={this.state.generatedData} delete={this.deletePortfolioItem} edit={this.editHandleClick} />
+            <MainContent onFullScreen={this.changeToFullScreen} generatedData={this.state.generatedData} delete={this.deletePortfolioItem} edit={this.editHandleClick} />
           )} />
           <Route path="/about" component={AboutPage} />
           <Route path="/edit/:id" render={(props) => (
@@ -65,8 +69,8 @@ class App extends Component {
           <Route exact path="/edit" render={(props) => (
             <Form {...props} onSubmit={this.addNewPortfolioItem} showEditedContent={this.showEditedContent} />
           )} />
-          <Route path="/portfolio-details" render={(props) => (
-            <ProtfolioDetails {...props} generatedData={this.state.generatedData} />
+          <Route path="/portfolio-details/:id" render={(props) => (
+            <ProtfolioDetails {...props} {...this.state.obj} />
           )} />         
 
         </div>
@@ -74,8 +78,8 @@ class App extends Component {
     );
   }
 }
-App.PropTypes = {
-  id: PropTypes.id,
+App.propTypes = {
+  key: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   imageUrl: PropTypes.string,  
