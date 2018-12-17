@@ -1,48 +1,65 @@
 [
 	{
-		"key":"1",
+		"key": "1",
 		"title": "item1",
 		"imageUrl": "/images/lapg.png",
-		"description": "Im item 1"
+		"description": "Im item 1",
+		"price": "10"
 	},
-	{   "key": "2",
+	{
+		"key": "2",
 		"title": "item2",
 		"imageUrl": "/images/port.png",
-		"description": "Im item 2"
+		"description": "Im item 2",
+		"price": "20"
 	},
-	{   "key": "3",
+	{
+		"key": "3",
 		"title": "item3",
 		"imageUrl": "/images/sqsp.png",
-		"description": "Im item 3"
+		"description": "Im item 3",
+		"price": "30"
 	},
-	{   "key": "4",
+	{
+		"key": "4",
 		"title": "item4",
 		"imageUrl": "/images/twdy.png",
-		"description": "Im item 4"
+		"description": "Im item 4",
+		"price": "20"
 	},
-	{   "key": "5",
+	{
+		"key": "5",
 		"title": "item5",
 		"imageUrl": "/images/lapg.png",
-		"description": "Im item 5"
+		"description": "Im item 5",
+		"price": "100"
 	},
-	{   "key": "6",
+	{
+		"key": "6",
 		"title": "item6",
 		"imageUrl": "/images/port.png",
-		"description": "Im item 6"
+		"description": "Im item 6",
+		"price": "10"
 	},
-	{   "key": "7",
+	{
+		"key": "7",
 		"title": "item7",
 		"imageUrl": "/images/sqsp.png",
-		"description": "Im item 7"
+		"description": "Im item 7",
+		"price": "20"
 	},
-	{   "key": "8",
+	{
+		"key": "8",
 		"title": "item8",
 		"imageUrl": "/images/twdy.png",
-		"description": "Im item 8"
+		"description": "Im item 8",
+		"price": "60"
 	},
-	{   "key": "9",
+	{
+		"key": "9",
 		"title": "item9",
 		"imageUrl": "/images/lapg.png",
-		"description": "Im item 9"
+		"description": "Im item 9",
+		"price": "80"
 	}
 ]

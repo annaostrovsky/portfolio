@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Logo from './logo';
 import Menu from '../sidebar/menu'
 import SocialMenu from '../sidebar/social-menu'
 
-class Sidebar extends Component {
-  render() {
+const Sidebar = ()=>{ 
     return (
       <div className="sidebar">
 	    <Logo/>
@@ -13,6 +12,5 @@ class Sidebar extends Component {
       </div>
     );
   }
-}
 
 export default Sidebar;
