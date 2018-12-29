@@ -19,7 +19,7 @@ class ProtfolioDetails extends Component {
 					<div>{this.props.description}</div>
 					<img className="portfolio-details__img" src={this.props.imageUrl} alt="full-screen-img"></img>
 					<button
-						className="fa fa-shopping-cart portfolio-details__icon"
+						className="fa fa-shopping-cart portfolio-details__icon portfolio-details__addToCartButton"
 						onClick={() => this.props.moveToCart(this.itemId)}
 					/>
 				</div>

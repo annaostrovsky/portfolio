@@ -9,7 +9,7 @@ const Header = props => {
 			{props.isLoggedIn &&
 				<Link to="/cart">
 					<span>Checkout</span>
-					<i className="fa fa-shopping-cart portfolio-element__icon"></i>
+					<i className="fa fa-shopping-cart header__checkoutLink portfolio-element__icon"></i>
 					{selectedItemsArray.length > 0 ?
 						<span className="header__counter">{selectedItemsArray.length}</span>
 						: ""}
