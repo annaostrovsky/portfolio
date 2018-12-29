@@ -34,12 +34,11 @@ a{
   margin: 20px 0 0 20px;
 	background: #C7C7C7;
 	cursor: pointer;
-	height: 240px;
-	width: 200px;
+	height: 260px;
+	width: 220px;
 	display: flex;
   flex-direction: column;
 	justify-content: space-around;
-	padding: 20px;
 	padding-bottom: 10px;
 	color: white;
 	text-transform: uppercase;
@@ -48,9 +47,12 @@ a{
 	letter-spacing: 2px;
 }
 .portfolio-element__main-content{
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .portfolio-element__title{
 color: white;
@@ -62,6 +64,13 @@ margin-bottom: 10px;
   background: none; 
   color: white; 
   cursor: pointer;
+}
+.portfolio-details__icon{
+  border: none;
+  background: none; 
+  color: white; 
+  position: absolute;
+  bottom: 0;
 }
 .portfolio-element__icon:focus{
   outline: none;
@@ -180,6 +189,15 @@ input[type="submit"]{
   height: 30px;
   padding: 0 26px;
   color: white;
+}
+
+.header__counter{
+  width: 44px;
+  padding: 0 6px;
+  color: #49C7D5;
+  background-color: white;
+  border-radius: 40px;
+  margin-left: 10px;
 }
 
 .cart{

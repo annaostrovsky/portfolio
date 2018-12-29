@@ -3,7 +3,7 @@ import CartItem from "./cart-item";
 import _ from "lodash";
 
 
-const Cart = props => {
+const Cart = props => {  
   return (
     <React.Fragment>
       <h4 className="cart__header">{props.selectedItemsArray.length === 0 || undefined ? "Cart Empty, go shop!" : "welcome to your cart"}</h4>

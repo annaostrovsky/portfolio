@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import ProtfolioDetails from "./components/portfolio-details";
 import Cart from "./components/cart";
 import Header from "./components/main-content/header"
+import Home from "./components/home";
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends Component {
     const toggle = this.state.isLoggedIn
     this.setState({
       isLoggedIn: !toggle
-    });   
+    });
   };
 
   deletePortfolioItem = index => {
@@ -68,25 +69,31 @@ class App extends Component {
               path="/"
               render={(props) => (
                 <Header
+                 selectedItemsArray={this.state.selectedItemsArray}
                   login={this.handleLogin}
                   {...props}
                   {...this.state}
                 />
               )}
             />
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <MainContent
-                  moveToCart={this.moveToCart}
-                  onFullScreen={this.changeToFullScreen}
-                  generatedData={this.state.generatedData}
-                  moveToCart={this.moveToCart}
-                />
-              )}
-            />
-
+            {this.state.isLoggedIn ?
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <MainContent
+                    moveToCart={this.moveToCart}
+                    onFullScreen={this.changeToFullScreen}
+                    generatedData={this.state.generatedData}
+                    moveToCart={this.moveToCart}
+                  />
+                )}
+              />
+              :
+              <Route exact path="/">
+                <Home />
+              </Route>
+            }
             <Route path="/about" component={AboutPage} />
             <Route
               path="/contact"
@@ -103,7 +110,9 @@ class App extends Component {
               render={props => (
                 <ProtfolioDetails
                   {...props}
-                  {...this.state.obj} />
+                  generatedData={this.state.generatedData}
+                  {...this.state.obj}
+                  moveToCart={this.moveToCart} />
               )}
             />
             <Route
@@ -117,8 +126,10 @@ class App extends Component {
                 />
               )}
             />
+
           </div>
         </div>
+
       </Router>
     );
   }

@@ -8,9 +8,9 @@ class ProtfolioDetails extends Component {
 	closePage = () => {
 		this.props.history.push("/");
 	}
+	itemId = this.props.location.pathname.substr(this.props.location.pathname.lastIndexOf('/') + 1);
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className="portfolio-details">
 				<div className="portfolio-details--wrapper">
@@ -18,6 +18,10 @@ class ProtfolioDetails extends Component {
 					<h3>{this.props.title}</h3>
 					<div>{this.props.description}</div>
 					<img class="portfolio-details__img" src={this.props.imageUrl} alt="full-screen-img"></img>
+					<button
+						className="fa fa-shopping-cart portfolio-details__icon"
+						onClick={() => this.props.moveToCart(this.itemId)}
+					/>
 				</div>
 			</div>
 		)
