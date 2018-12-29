@@ -34,7 +34,6 @@ class App extends Component {
     const itemToRemove = this.state.selectedItemsArray.filter(item => item.key !== index)
     this.setState({
       selectedItemsArray: itemToRemove
-
     });
   };
 
@@ -48,7 +47,6 @@ class App extends Component {
 
   moveToCart = elementKey => {
     const selectedItemsArray = this.state.selectedItemsArray.slice(0);
-
     const newItemToPush = this.state.generatedData.filter(
       item => item.key.toString() === elementKey.toString()
     )[0]
@@ -69,7 +67,7 @@ class App extends Component {
               path="/"
               render={(props) => (
                 <Header
-                 selectedItemsArray={this.state.selectedItemsArray}
+                  selectedItemsArray={this.state.selectedItemsArray}
                   login={this.handleLogin}
                   {...props}
                   {...this.state}

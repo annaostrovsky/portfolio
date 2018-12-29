@@ -30,7 +30,7 @@ class Form extends Component {
 				<label> description:</label>
 				<textarea value={this.state.description} name="description" onChange={this.handleChange}></textarea>
 				<input type="submit" value="submit"></input>
-				<Prompt when={!!this.state.title || !!this.state.description}
+				<Prompt when={!this.state.title || !this.state.description}
 					message={`Are you sure you want to leave page without submitting the form?`}>
 				</Prompt>
 			</form>
