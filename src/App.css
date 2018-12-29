@@ -225,3 +225,15 @@ input[type="submit"]{
 a{
   color: white;
 }
+
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #324259;
+}
+
+.home img{
+  margin-top: 30px;
+  width: 300px;
+}
