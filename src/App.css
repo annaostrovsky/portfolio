@@ -237,3 +237,13 @@ a{
   margin-top: 30px;
   width: 300px;
 }
+
+.home div{
+  font-weight: 100;
+  font-size: 30px;
+  margin-top: 40px;
+}
+.header div{
+  font-weight: 100;
+  font-size: 20px;
+}

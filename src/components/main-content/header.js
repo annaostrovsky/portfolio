@@ -5,7 +5,7 @@ const Header = props => {
 	const { selectedItemsArray } = props;
 	return (
 		<div className="header">
-			<h3>Shop</h3>
+			<div>Online Shop</div>
 			{props.isLoggedIn &&
 				<Link to="/cart">
 					<span>Checkout</span>

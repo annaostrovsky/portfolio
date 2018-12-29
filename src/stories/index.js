@@ -20,6 +20,6 @@ storiesOf('Store', module)
       <Form />
     </Router>
   ))
-  .add('cart-item', () => (
-    <CartItem title="item" description="my item" />
+  .add('home', () => (
+    <Home />
   ));  
