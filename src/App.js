@@ -5,7 +5,7 @@ import MainContent from "./components/main-content/main-content.js";
 import data from "./data.json";
 import AboutPage from "./pages/about";
 import Form from "./pages/form";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import ProtfolioDetails from "./pages/portfolio-details";
 import Cart from "./pages/cart";
@@ -66,74 +66,72 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="flex">
-          <Route path="/" component={Sidebar} />
-          <div className="flex flex--column" >
-            <Route
-              path="/"
-              render={(props) => (
-                <Header
-                  selectedItemsArray={this.state.selectedItemsArray}
-                  login={this.handleLogin}
-                  {...props}
-                  {...this.state}
-                />
-              )}
-            />
-            {this.state.isLoggedIn ?
+        <Switch>
+          <div className="flex">
+            <Route path="/" component={Sidebar} />
+            <div className="flex flex--column" >
               <Route
-                exact
                 path="/"
-                render={() => (
-                  <MainContent
-                    moveToCart={this.moveToCart}
-                    onFullScreen={this.changeToFullScreen}
-                    generatedData={this.state.generatedData}
-                    moveToCart={this.moveToCart}
+                render={(props) => (
+                  <Header
+                    selectedItemsArray={this.state.selectedItemsArray}
+                    login={this.handleLogin}
+                    {...props}
+                    {...this.state}
                   />
                 )}
               />
-              :
-              <Route exact path="/">
-                <Home />
+              {this.state.isLoggedIn &&
+                <Route
+                  exact
+                  path="/"
+                  render={() => (
+                    <MainContent
+                      moveToCart={this.moveToCart}
+                      onFullScreen={this.changeToFullScreen}
+                      generatedData={this.state.generatedData}
+                      moveToCart={this.moveToCart}
+                    />
+                  )}
+                />
+              }
+              <Route path="/" exact component={Home}>
               </Route>
-            }
+              <Route path="/about" component={AboutPage} />
+              <Route
+                path="/contact"
+                render={props => (
+                  <Form
+                    {...props}
 
-            <Route path="/about" component={AboutPage} />
-            <Route
-              path="/contact"
-              render={props => (
-                <Form
-                  {...props}
+                  />
+                )}
+              />
+              <Route
+                path="/portfolio-details/:id"
+                render={props => (
+                  <ProtfolioDetails
+                    {...props}
+                    generatedData={this.state.generatedData}
+                    {...this.state.obj}
+                    moveToCart={this.moveToCart} />
+                )}
+              />
+              <Route
+                path="/cart"
+                render={props => (
+                  <Cart
+                    {...props}
+                    delete={this.deletePortfolioItem}
+                    moveToCart={this.moveToCart}
+                    selectedItemsArray={this.state.selectedItemsArray}
+                  />
+                )}
+              />
 
-                />
-              )}
-            />
-            <Route
-              path="/portfolio-details/:id"
-              render={props => (
-                <ProtfolioDetails
-                  {...props}
-                  generatedData={this.state.generatedData}
-                  {...this.state.obj}
-                  moveToCart={this.moveToCart} />
-              )}
-            />
-            <Route
-              path="/cart"
-              render={props => (
-                <Cart
-                  {...props}
-                  delete={this.deletePortfolioItem}
-                  moveToCart={this.moveToCart}
-                  selectedItemsArray={this.state.selectedItemsArray}
-                />
-              )}
-            />
-
+            </div>
           </div>
-        </div>
-
+        </Switch>
       </Router>
     );
   }
