@@ -3,14 +3,14 @@ import "./App.css";
 import Sidebar from "./components/sidebar/sidebar.js";
 import MainContent from "./components/main-content/main-content.js";
 import data from "./data.json";
-import AboutPage from "./components/about";
-import Form from "./components/form";
+import AboutPage from "./pages/about";
+import Form from "./pages/form";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import PropTypes from "prop-types";
-import ProtfolioDetails from "./components/portfolio-details";
-import Cart from "./components/cart";
+import ProtfolioDetails from "./pages/portfolio-details";
+import Cart from "./pages/cart";
 import Header from "./components/main-content/header"
-import Home from "./components/home";
+import Home from "./pages/home";
 import translations from './services/translations';
 import T from 'i18n-react';
 
@@ -98,6 +98,7 @@ class App extends Component {
                 <Home />
               </Route>
             }
+
             <Route path="/about" component={AboutPage} />
             <Route
               path="/contact"
@@ -108,7 +109,6 @@ class App extends Component {
                 />
               )}
             />
-
             <Route
               path="/portfolio-details/:id"
               render={props => (
