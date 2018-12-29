@@ -234,11 +234,11 @@ a{
 }
 
 .home img{
-  margin-top: 30px;
+  margin-top: 50px;
   width: 300px;
 }
 
-.home div{
+.home__text{
   font-weight: 100;
   font-size: 30px;
   margin-top: 40px;

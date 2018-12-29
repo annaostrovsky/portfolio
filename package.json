@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "font-awesome": "^4.7.0",
+    "i18n-react": "^0.6.4",
+    "i18next": "^12.1.0",
+    "react-flags": "^0.1.17",
+    "react-i18next": "^8.3.8",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

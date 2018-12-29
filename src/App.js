@@ -11,6 +11,8 @@ import ProtfolioDetails from "./components/portfolio-details";
 import Cart from "./components/cart";
 import Header from "./components/main-content/header"
 import Home from "./components/home";
+import translations from './services/translations';
+import T from 'i18n-react';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +23,10 @@ class App extends Component {
       isLoggedIn: false,
       selectedItemsArray: []
     };
+  }
+
+  componentWillMount() {
+    T.setTexts(translations.en);
   }
 
   handleLogin = () => {

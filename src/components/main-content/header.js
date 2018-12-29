@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import T from 'i18n-react';
+import translations from '../../services/translations';
 
 const Header = props => {
 	const { selectedItemsArray } = props;
 	return (
 		<div className="header">
+			<button className="header__button" onClick={() => T.setTexts(translations.en)}>Change to hebrew</button>
 			<div>Online Shop</div>
 			{props.isLoggedIn &&
 				<Link to="/cart">
